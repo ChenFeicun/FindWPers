@@ -6,7 +6,7 @@ AV.Cloud.define("hello", function(request, response) {
 
 AV.Cloud.define("getWPUser", function(request, response) {
 	var query = new AV.Query("WPUser");
-	query.equalTo("objectId", request.params.ObjectId);
+	query.equalTo("objectId", request.params.objectId);
 	query.find({
 		success: function(results) {
 			response.success(results[0]);
