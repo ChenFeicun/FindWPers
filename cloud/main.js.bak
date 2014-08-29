@@ -38,8 +38,13 @@ AV.Cloud.define("getWPUser", function(request, response) {
 
 //计算两个GPS点之间的距离
 AV.Cloud.define("getDistance" function(request, response) {
-	var user = AV.Cloud.run('getUserByObjId', {}, {
-	
+	var user;
+	AV.Cloud.run('getUserByObjId', {}, {
+		success: function(result) {
+			user = result;
+		},
+		error: function(error) {
+		}
 	});//getUserByObjId(request, response);
 	var point = user.UserLocation;
 	var query = new AV.Query("WPUser");
