@@ -10,8 +10,8 @@ AV.Cloud.define("getUserByObjId", function(request, response) {
 		success: function(result) {
 			var lat = result.UserLatitude;
 			//var point = new AV.GeoPoint({latitude: result.UserLatitude, longitude: result.UserLongitude});
-			result.set("UserLocation", point);
-			result.save();
+			//result.set("UserLocation", point);
+			//result.save();
 			response.success(lat);
 		},
 		error: function() {
