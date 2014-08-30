@@ -8,10 +8,9 @@ AV.Cloud.define("getUserByObjId", function(request, response) {
 	var query = new AV.Query("WPUser");
 	query.get(request.params.objectId, {
 		success: function(result) {
-			//var lat = result.UserLatitude;
-			//var point = new AV.GeoPoint({latitude: result.UserLatitude, longitude: result.UserLongitude});
-			//result.set("UserLocation", point);
-			//result.save();
+			var point = new AV.GeoPoint({latitude: result.get("UserLatitude"), longitude: result.get("UserLongitude")});
+			result.set("UserLocation", point);
+			result.save();
 			response.success(result);
 		},
 		error: function() {
