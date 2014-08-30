@@ -20,3 +20,17 @@ AV.Cloud.define("getUserByObjId", function(request, response) {
 });
 
 
+AV.Cloud.define("getUsersList", function(request, response) {
+	var point = new AV.GeoPoint({latitude: request.params.UserLatitude, longitude: request.params.UserLongitude});
+	var query = new AV.Query("WPUser");
+	query.notEqualTo("objectId", request.params.objectId);
+	query.withinKilometers("UserLocation", point, 0.5);
+	query.find({
+		success: function(results) {
+			response.success(results);
+		},
+		error: function() {
+			response.error("User not found");
+		}
+	});
+});
