@@ -11,7 +11,7 @@ AV.Cloud.define("getUserByObjId", function(request, response) {
 			var point = new AV.GeoPoint({latitude: result.UserLatitude, longitude: result.UserLongitude});
 			result.set("UserLocation", point);
 			result.save();
-			response.success(result);
+			response.success(point);
 		},
 		error: function() {
 			response.error("User not found");
