@@ -36,11 +36,11 @@ AV.Cloud.define("getUsersList", function(request, response) {
 });
 
 AV.Cloud.define("getUserThumbnail", function(request, response) {
-	
 	var query = new AV.Query("_File");
 	query.get(request.params.objectId, {
 		success: function(result) {
-			response.success(result.thumbnailURL(100, 200));
+			response.success(result);
+			//response.success(result.thumbnailURL(100, 200));
 		},
 		error: function() {
 			response.error("Picture not found");
