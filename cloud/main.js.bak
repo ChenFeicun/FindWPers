@@ -39,7 +39,7 @@ AV.Cloud.define("getUserThumbnail", function(request, response) {
 	var query = new AV.Query("_File");
 	query.get(request.params.objectId, {
 		success: function(result) {
-			response.success(results);
+			response.success(result);
 			//response.success(result.thumbnailURL(100, 200));
 		},
 		error: function() {
